@@ -29,6 +29,8 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({ template: path.resolve('./src/index.html') }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
     ],
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.json', '.css'],
