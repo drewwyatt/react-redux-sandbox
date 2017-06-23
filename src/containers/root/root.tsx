@@ -1,13 +1,21 @@
 import * as React from 'react';
 import App from 'containers/app';
+import { Provider } from "react-redux";
+import { Store } from "redux";
 
-class Root extends React.Component<{}, {}> {
+interface Props {
+    store: Store<any>;
+}
+
+class Root extends React.Component<Props, {}> {
     render(): JSX.Element {
         return (
-            <div>
-                <input type="text" placeholder="enter text here..." />
-                <App />
-            </div>)
+            <Provider store={this.props.store}>
+                <div>
+                    <input type="text" placeholder="enter text here..." />
+                    <App />
+                </div>
+            </Provider>)
         ;
     }
 }
