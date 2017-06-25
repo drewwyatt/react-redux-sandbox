@@ -9,9 +9,10 @@ export namespace CounterActions {
 
     export const ActionType = {
         INCREMENT_COUNTER: 'COUNTER/INCREMENT_COUNTER' as 'COUNTER/INCREMENT_COUNTER',
-        DECREMENT_COUNTER: 'COUNTER/DECREMENT_COUNTER' as 'COUNTER/DECREMENT_COUNTER'
+        DECREMENT_COUNTER: 'COUNTER/DECREMENT_COUNTER' as 'COUNTER/DECREMENT_COUNTER',
     };
 
+    // Type and ActionType are probably too similarly named
     export type Type = 
         IncrementCounterAction |
         DecrementCounterAction;
@@ -42,3 +43,4 @@ export namespace CounterActions {
     export const decrementBy = (amount: number): DecrementCounterAction => ({ type: ActionType.DECREMENT_COUNTER, payload: { amount } });
 }
 
+export default CounterActions;

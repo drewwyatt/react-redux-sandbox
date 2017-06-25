@@ -11,10 +11,10 @@ class Root extends React.Component<Props, {}> {
     render(): JSX.Element {
         return (
             <Provider store={this.props.store}>
-                <div>
-                    <input type="text" placeholder="enter text here..." />
+                <fieldset>
+                    <legend>Root</legend>
                     <App />
-                </div>
+                </fieldset>
             </Provider>)
         ;
     }
