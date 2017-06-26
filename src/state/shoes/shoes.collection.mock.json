@@ -1,0 +1,14 @@
+[
+	{
+		"id": 1,
+		"name": "Pegasus",
+		"brand": "Nike",
+		"type": 2
+	},
+	{
+		"id": 2,
+		"name": "Ultraboost",
+		"brand": "Adidas",
+		"type": 3
+	}
+]

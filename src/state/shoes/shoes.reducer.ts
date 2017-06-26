@@ -7,6 +7,7 @@ export interface IShoesState {
     selectedId: number;
     collection: IShoe[];
     selected: IShoe;
+    error: string;
 }
 
 const DEFAULT_STATE: IShoesState = {
@@ -14,9 +15,10 @@ const DEFAULT_STATE: IShoesState = {
     selectedId: -1,
     collection: [],
     selected: { ...DEFAULT_SHOE },
+    error: '',
 };
 
-const { FETCH, FIND, CREATE, UPDATE, DELETE, LOAD_COLLECTION, LOAD_ONE } = Actions.ActionType;
+const { FETCH, FIND, CREATE, UPDATE, DELETE, LOAD_COLLECTION, LOAD_ONE, ERROR } = Actions.ActionType;
 
 export const shoesReducer = (state: IShoesState = DEFAULT_STATE, action: Actions.ShoeAction): IShoesState => {
     switch (action.type) {
@@ -37,6 +39,8 @@ export const shoesReducer = (state: IShoesState = DEFAULT_STATE, action: Actions
                 fetchStatus: BRRedux.FetchStatus.SUCCESS,
                 selected: action.payload,
             });
+        case ERROR:
+            return Object.assign({}, state, { fetchStatus: BRRedux.FetchStatus.ERROR, error: action.payload });
         case FETCH:  // has no payload - fetching all shoes
         case CREATE: // payload used in middleware
         case UPDATE: // payload used in midleware

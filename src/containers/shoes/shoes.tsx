@@ -9,6 +9,7 @@ interface Props {
 	fetchStatus: BRRedux.FetchStatus;
 	selectedId: number;
 	shoes: ShoesModels.Shoe[];
+	error: string;
 	fetch(): any;
 }
 
@@ -28,6 +29,7 @@ const mapStateToProps = (state: IRootState) => ({
 	fetchStatus: state.shoes.fetchStatus,
 	selectedId: state.shoes.selectedId,
 	shoes: state.shoes.collection.map(ShoesModels.Shoe.Deserialize),
+	error: state.shoes.error,
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<IRootState>) => ({

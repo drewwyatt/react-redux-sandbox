@@ -14,6 +14,7 @@ namespace ShoesActions {
         CREATE = 'SHOES/CREATE',
         UPDATE = 'SHOES/UPDATE',
         DELETE = 'SHOES/DELETE',
+        ERROR  = 'SHOES/ERROR',
 
         // Used by middleware
         LOAD_ONE = 'SHOES/LOAD_ONE',
@@ -32,7 +33,8 @@ namespace ShoesActions {
         BRRedux.Action<ActionType.CREATE, IShoe> |
         BRRedux.Action<ActionType.UPDATE, IShoe> |
         BRRedux.Action<ActionType.LOAD_ONE, IShoe> |
-        BRRedux.Action<ActionType.LOAD_COLLECTION, IShoe[]>;
+        BRRedux.Action<ActionType.LOAD_COLLECTION, IShoe[]> |
+        BRRedux.Action<ActionType.ERROR, string>;
 
     /**
      * Action Creatos
@@ -51,6 +53,7 @@ namespace ShoesActions {
 
     export const loadOne = BRRedux.createAction(ActionType.LOAD_ONE, (shoe: IShoe) => shoe);
     export const load = BRRedux.createAction(ActionType.LOAD_COLLECTION, (shoes: IShoe[]) => shoes);
+    export const error = BRRedux.createAction(ActionType.ERROR, (error: string) => error);
 }
 
 export default ShoesActions;
