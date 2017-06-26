@@ -8,29 +8,16 @@ namespace ShoesActions {
      */
 
     // Typescript >= 2.4.0
-    // export enum ActionType {
-    //     FETCH  = 'SHOES/FETCH',
-    //     FIND   = 'SHOES/FIND',
-    //     CREATE = 'SHOES/CREATE',
-    //     UPDATE = 'SHOES/UPDATE',
-    //     DELETE = 'SHOES/DELETE',
-
-    //     // Used by middleware
-    //     LOAD_ONE = 'SHOES/LOAD_ONE',
-    //     LOAD_COLLECTION = 'SHOES/LOAD_COLLECTION',
-    // }
-
-    // Typescript <= 2.3.4
-    export const ActionType = {
-        FETCH : 'SHOES/FETCH'  as 'SHOES/FETCH',
-        FIND  : 'SHOES/FIND'   as 'SHOES/FIND',
-        CREATE: 'SHOES/CREATE' as 'SHOES/CREATE',
-        UPDATE: 'SHOES/UPDATE' as 'SHOES/UPDATE',
-        DELETE: 'SHOES/DELETE' as 'SHOES/DELETE',
+    export enum ActionType {
+        FETCH  = 'SHOES/FETCH',
+        FIND   = 'SHOES/FIND',
+        CREATE = 'SHOES/CREATE',
+        UPDATE = 'SHOES/UPDATE',
+        DELETE = 'SHOES/DELETE',
 
         // Used by middleware
-        LOAD_ONE: 'SHOES/LOAD_ONE' as 'SHOES/LOAD_ONE',
-        LOAD_COLLECTION: 'SHOES/LOAD_COLLECTION' as 'SHOES/LOAD_COLLECTION',
+        LOAD_ONE = 'SHOES/LOAD_ONE',
+        LOAD_COLLECTION = 'SHOES/LOAD_COLLECTION',
     }
 
     /**
@@ -38,24 +25,14 @@ namespace ShoesActions {
      * Used for type discrimination in reducer
      */
     // Typescript >= 2.4.0
-    // export type ShoeAction = 
-    //     BRRedux.Action<ActionType.FETCH> |
-    //     BRRedux.Action<ActionType.FIND, number> |
-    //     BRRedux.Action<ActionType.DELETE, number> |
-    //     BRRedux.Action<ActionType.CREATE, IShoe> |
-    //     BRRedux.Action<ActionType.UPDATE, IShoe> |
-    //     BRRedux.Action<ActionType.LOAD_ONE, IShoe> |
-    //     BRRedux.Action<ActionType.LOAD_COLLECTION, IShoe[]>;
-    
-    // Typescript <= 2.3.4
     export type ShoeAction = 
-        BRRedux.Action<'SHOES/FETCH'> |
-        BRRedux.Action<'SHOES/FIND', number> |
-        BRRedux.Action<'SHOES/DELETE', number> |
-        BRRedux.Action<'SHOES/CREATE', IShoe> |
-        BRRedux.Action<'SHOES/UPDATE', IShoe> |
-        BRRedux.Action<'SHOES/LOAD_ONE', IShoe> |
-        BRRedux.Action<'SHOES/LOAD_COLLECTION', IShoe[]>;
+        BRRedux.Action<ActionType.FETCH> |
+        BRRedux.Action<ActionType.FIND, number> |
+        BRRedux.Action<ActionType.DELETE, number> |
+        BRRedux.Action<ActionType.CREATE, IShoe> |
+        BRRedux.Action<ActionType.UPDATE, IShoe> |
+        BRRedux.Action<ActionType.LOAD_ONE, IShoe> |
+        BRRedux.Action<ActionType.LOAD_COLLECTION, IShoe[]>;
 
     /**
      * Action Creatos

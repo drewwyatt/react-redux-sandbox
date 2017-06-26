@@ -6,6 +6,7 @@ namespace BRRedux {
 
     export function createAction<T extends string>(type: T): () => { type: T };
     export function createAction<T extends string, P>(type: T, actionCreator: (payload: P) => P): (payload: P) => { type: T, payload: P };
+    export function createAction<T extends string, P1, P2>(type: T, actionCreator: (p1: P1, p2: P2) => P1 & P2): (payload: P1 & P2) => { type: T, payload: P1 & P2 };
     export function createAction<T extends string>(type: T, actionCreator?: Function) {
         return (...payload: any[]) => ({
             type,
@@ -13,21 +14,14 @@ namespace BRRedux {
         });
     }
 
-    // Typescript >=  2.4.0
-    // export enum FetchStatus {
-    //     NOT_FETCHED = 'NOT_FETCHED',
-    //     FETCHING    = 'FETCHING',
-    //     SUCCESS     = 'SUCCESS',
-    //     ERROR       = 'ERROR',
-    // }
+Object.assign();
 
-    // Typescript <= 2.3.4
-    // (still gets the job done, just less descriptive in logs)
+    // Typescript >=  2.4.0
     export enum FetchStatus {
-        NOT_FETCHED,
-        FETCHING,
-        SUCCESS,
-        ERROR,
+        NOT_FETCHED = 'NOT_FETCHED',
+        FETCHING    = 'FETCHING',
+        SUCCESS     = 'SUCCESS',
+        ERROR       = 'ERROR',
     }
 }
 
