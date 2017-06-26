@@ -2,14 +2,14 @@ import BRRedux from 'br-redux';
 import Actions from './shoes.actions';
 import { IShoe, DEFAULT_SHOE } from './shoes.models';
 
-interface IState {
+export interface IShoesState {
     fetchStatus: BRRedux.FetchStatus;
     selectedId: number;
     collection: IShoe[];
     selected: IShoe;
 }
 
-const DEFAULT_STATE: IState = {
+const DEFAULT_STATE: IShoesState = {
     fetchStatus: BRRedux.FetchStatus.NOT_FETCHED,
     selectedId: -1,
     collection: [],
@@ -18,7 +18,7 @@ const DEFAULT_STATE: IState = {
 
 const { FETCH, FIND, CREATE, UPDATE, DELETE, LOAD_COLLECTION, LOAD_ONE } = Actions.ActionType;
 
-const shoesReducer = (state: IState = DEFAULT_STATE, action: Actions.ShoeAction): IState => {
+export const shoesReducer = (state: IShoesState = DEFAULT_STATE, action: Actions.ShoeAction): IShoesState => {
     switch (action.type) {
         case FIND:
             // If we already have this, use the shoe in memory
@@ -46,5 +46,3 @@ const shoesReducer = (state: IState = DEFAULT_STATE, action: Actions.ShoeAction)
             return state;
     }
 }
-
-export default shoesReducer;

@@ -14,8 +14,6 @@ namespace BRRedux {
         });
     }
 
-Object.assign();
-
     // Typescript >=  2.4.0
     export enum FetchStatus {
         NOT_FETCHED = 'NOT_FETCHED',
