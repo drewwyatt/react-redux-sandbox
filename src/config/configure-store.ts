@@ -1,11 +1,12 @@
 import createSagaMiddleware from 'redux-saga'
 import { Store, applyMiddleware, createStore } from 'redux';
+import logger from 'redux-logger';
 
 import { rootReducer, rootSaga } from 'state';
 
 const configureStore = (preloadedState: any = {}): Store<any> => {
     const sagaMiddleware = createSagaMiddleware();
-    const enhancers = [sagaMiddleware];
+    const enhancers = [sagaMiddleware, logger];
 
     const middleware = applyMiddleware(...enhancers);
     const store = createStore(rootReducer, preloadedState, middleware);

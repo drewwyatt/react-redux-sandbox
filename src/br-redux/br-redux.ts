@@ -6,9 +6,8 @@ namespace BRRedux {
 
     export function createAction<T extends string>(type: T): () => { type: T };
     export function createAction<T extends string, P>(type: T, actionCreator: (payload: P) => P): (payload: P) => { type: T, payload: P };
-    export function createAction<T extends string, P1, P2>(type: T, actionCreator: (p1: P1, p2: P2) => P1 & P2): (payload: P1 & P2) => { type: T, payload: P1 & P2 };
     export function createAction<T extends string>(type: T, actionCreator?: Function) {
-        return (...payload: any[]) => ({
+        return (payload: any = undefined) => ({
             type,
             payload,
         });

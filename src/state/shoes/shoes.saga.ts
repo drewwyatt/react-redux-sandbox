@@ -4,15 +4,13 @@ import { IShoe } from './shoes.models';
 const { FETCH } = ShoesActions.ActionType;
 const shoesMocks = require('./shoes.collection.mock.json') as IShoe[];
 
-const spoofHelp = async (timeToWait: number = 10000): Promise<{}> => {
-	return new Promise(res => {
-		setTimeout(() => res(), timeToWait);
-	});
-}
+const spoofHelp = async (timeToWait: number = 10000): Promise<{}> => 
+	new Promise(res => setTimeout(() => res(), timeToWait));
 
 /**
  * Fired every time SHOES/FETCH is dispatched
  */
+
 function* fetchAllShoes(action: ShoesActions.ShoeAction) {
 	try {
 		yield spoofHelp(3000); // wait 3 seconds

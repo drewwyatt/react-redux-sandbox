@@ -17,9 +17,11 @@
   version "15.0.30"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-15.0.30.tgz#a4e153e1e83fbef341fc9aad1a7d62bf8c1f52a3"
 
-"@types/redux-actions@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@types/redux-actions/-/redux-actions-1.2.6.tgz#cfdeea3271ebdabf23cdc237080e752b07171069"
+"@types/redux-logger@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/redux-logger/-/redux-logger-3.0.0.tgz#abe464fe812d03c3580ec56e6b5b375861439fca"
+  dependencies:
+    redux "^3.6.0"
 
 abbrev@1:
   version "1.1.0"

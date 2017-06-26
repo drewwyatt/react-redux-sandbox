@@ -2,7 +2,7 @@ import { shoesSaga } from './shoes';
 
 function* rootSaga() {
 	yield [
-		shoesSaga()
+		shoesSaga(),
 	];
 }
 
