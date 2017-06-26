@@ -1,56 +1,79 @@
-namespace BRRedux {
-    export interface Action<T extends string, P = undefined> {
-        type: T;
-        payload?: P;
-    }
-
-    export function createAction<T extends string>(type: T): () => { type: T };
-    export function createAction<T extends string, P>(type: T, actionCreator: (payload: P) => P): (payload: P) => { type: T, payload: P };
-    export function createAction<T extends string>(type: T, actionCreator?: Function) {
-        return (...payload: any[]) => ({
-            type,
-            payload,
-        });
-    }
-
-    export enum FetchStatus {
-        
-    }
-}
+import BRRedux from 'br-redux';
+import { IShoe } from './shoes.models';
 
 namespace ShoesActions {
     /**
      * Constants
      * Used as the "type" value in an action object.
      */
-    export enum ActionType {
-        FETCH  = 'SHOES/FETCH',
-        FIND   = 'SHOES/FIND',
-        CREATE = 'SHOES/CREATE',
-        UPDATE = 'SHOES/UPDATE',
-        DELETE = 'SHOES/DELETE',
+
+    // Typescript >= 2.4.0
+    // export enum ActionType {
+    //     FETCH  = 'SHOES/FETCH',
+    //     FIND   = 'SHOES/FIND',
+    //     CREATE = 'SHOES/CREATE',
+    //     UPDATE = 'SHOES/UPDATE',
+    //     DELETE = 'SHOES/DELETE',
+
+    //     // Used by middleware
+    //     LOAD_ONE = 'SHOES/LOAD_ONE',
+    //     LOAD_COLLECTION = 'SHOES/LOAD_COLLECTION',
+    // }
+
+    // Typescript <= 2.3.4
+    export const ActionType = {
+        FETCH : 'SHOES/FETCH'  as 'SHOES/FETCH',
+        FIND  : 'SHOES/FIND'   as 'SHOES/FIND',
+        CREATE: 'SHOES/CREATE' as 'SHOES/CREATE',
+        UPDATE: 'SHOES/UPDATE' as 'SHOES/UPDATE',
+        DELETE: 'SHOES/DELETE' as 'SHOES/DELETE',
 
         // Used by middleware
-        LOAD_ONE = 'SHOES/LOAD_ONE',
-        LOAD_COLLECTION = 'SHOES/LOAD_COLLECTION',
+        LOAD_ONE: 'SHOES/LOAD_ONE' as 'SHOES/LOAD_ONE',
+        LOAD_COLLECTION: 'SHOES/LOAD_COLLECTION' as 'SHOES/LOAD_COLLECTION',
     }
 
     /**
      * ActionType
      * Used for type discrimination in reducer
      */
+    // Typescript >= 2.4.0
+    // export type ShoeAction = 
+    //     BRRedux.Action<ActionType.FETCH> |
+    //     BRRedux.Action<ActionType.FIND, number> |
+    //     BRRedux.Action<ActionType.DELETE, number> |
+    //     BRRedux.Action<ActionType.CREATE, IShoe> |
+    //     BRRedux.Action<ActionType.UPDATE, IShoe> |
+    //     BRRedux.Action<ActionType.LOAD_ONE, IShoe> |
+    //     BRRedux.Action<ActionType.LOAD_COLLECTION, IShoe[]>;
+    
+    // Typescript <= 2.3.4
     export type ShoeAction = 
-        BRRedux.Action<ActionType.FETCH> |
-        BRRedux.Action<ActionType.FIND, number>;
+        BRRedux.Action<'SHOES/FETCH'> |
+        BRRedux.Action<'SHOES/FIND', number> |
+        BRRedux.Action<'SHOES/DELETE', number> |
+        BRRedux.Action<'SHOES/CREATE', IShoe> |
+        BRRedux.Action<'SHOES/UPDATE', IShoe> |
+        BRRedux.Action<'SHOES/LOAD_ONE', IShoe> |
+        BRRedux.Action<'SHOES/LOAD_COLLECTION', IShoe[]>;
 
     /**
-     * Actions
-     * i.e. the real stuff that actually makes it to the compiled Javascript
+     * Action Creatos
+     * i.e. the stuff that actually makes it to the compiled Javascript
      */
     export const fetchAll = BRRedux.createAction(ActionType.FETCH);
+    
     export const find = BRRedux.createAction(ActionType.FIND, (id: number) => id);
+    export const del = BRRedux.createAction(ActionType.DELETE, (id: number) => id);
     // NOTE: in order for this action creator to stay typesafe, you MUST provide the type
     //       annotation in the curried function.
+    // OTHER NOTE: it also looke like delete is a reserved keyword? TIL...
+
+    export const create = BRRedux.createAction(ActionType.CREATE, (shoe: IShoe) => shoe);
+    export const update = BRRedux.createAction(ActionType.UPDATE, (shoe: IShoe) => shoe);
+
+    export const loadOne = BRRedux.createAction(ActionType.LOAD_ONE, (shoe: IShoe) => shoe);
+    export const load = BRRedux.createAction(ActionType.LOAD_COLLECTION, (shoes: IShoe[]) => shoes);
 }
 
 export default ShoesActions;
