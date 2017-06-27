@@ -20,7 +20,6 @@ describe('Shoes Actions', () => {
 
     test('Create actions are correctly formatted', () => {
         const shoe1 = { name: 'Shoe 1', brand: '', type: ShoeType.BASKETBALL };
-
         expect(ShoesActions.create(shoe1)).toEqual({ type: CREATE, payload: shoe1 });
     });
 });
