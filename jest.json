@@ -1,0 +1,33 @@
+{
+    "collectCoverageFrom": [
+        "src/**/*.{ts,tsx}",
+        "!src/**/*.story.{ts,tsx}",
+        "!src/**/*.test.{js,jsx,ts,tsx}",
+        "!src/**/index.{js,jsx,ts,tsx}"
+    ],
+    "coverageThreshold": {
+        "global": {
+            "statements": 100,
+            "branches": 100,
+            "functions": 100,
+            "lines": 100
+        }
+    },
+    "moduleDirectories": [
+        "node_modules",
+        "src"
+    ],
+    "transform": {
+        "^.+\\.tsx?$": "<rootDir>/jest.preprocessor.js"
+    },
+    "moduleNameMapper": {
+        "\\.css$": "identity-obj-proxy"
+    },
+    "testRegex": "(/__tests__/.*|(.|/)(test|spec)).tsx?$",
+    "moduleFileExtensions": [
+        "ts",
+        "tsx",
+        "js",
+        "json"
+    ]
+  }

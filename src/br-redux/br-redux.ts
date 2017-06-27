@@ -1,3 +1,5 @@
+import { Omit } from './omit';
+
 namespace BRRedux {
     export interface Action<T extends string, P = undefined> {
         type: T;
@@ -20,6 +22,8 @@ namespace BRRedux {
         SUCCESS     = 'SUCCESS',
         ERROR       = 'ERROR',
     }
+
+    export type Creatable<T extends { id: string | number }> = Omit<T, 'id'>;
 }
 
 export default BRRedux;

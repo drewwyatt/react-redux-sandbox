@@ -14,11 +14,11 @@ namespace ShoesActions {
         CREATE = 'SHOES/CREATE',
         UPDATE = 'SHOES/UPDATE',
         DELETE = 'SHOES/DELETE',
-        ERROR  = 'SHOES/ERROR',
 
         // Used by middleware
         LOAD_ONE = 'SHOES/LOAD_ONE',
         LOAD_COLLECTION = 'SHOES/LOAD_COLLECTION',
+        ERROR = 'SHOES/ERROR',
     }
 
     /**
@@ -30,7 +30,7 @@ namespace ShoesActions {
         BRRedux.Action<ActionType.FETCH> |
         BRRedux.Action<ActionType.FIND, number> |
         BRRedux.Action<ActionType.DELETE, number> |
-        BRRedux.Action<ActionType.CREATE, IShoe> |
+        BRRedux.Action<ActionType.CREATE, BRRedux.Creatable<IShoe>> |
         BRRedux.Action<ActionType.UPDATE, IShoe> |
         BRRedux.Action<ActionType.LOAD_ONE, IShoe> |
         BRRedux.Action<ActionType.LOAD_COLLECTION, IShoe[]> |
@@ -48,7 +48,7 @@ namespace ShoesActions {
     //       annotation in the curried function.
     // OTHER NOTE: it also looke like delete is a reserved keyword? TIL...
 
-    export const create = BRRedux.createAction(ActionType.CREATE, (shoe: IShoe) => shoe);
+    export const create = BRRedux.createAction(ActionType.CREATE, (shoe: BRRedux.Creatable<IShoe>) => shoe);
     export const update = BRRedux.createAction(ActionType.UPDATE, (shoe: IShoe) => shoe);
 
     export const loadOne = BRRedux.createAction(ActionType.LOAD_ONE, (shoe: IShoe) => shoe);
