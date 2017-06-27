@@ -10,7 +10,7 @@ export interface IShoesState {
     error: string;
 }
 
-const DEFAULT_STATE: IShoesState = {
+export const DEFAULT_STATE: IShoesState = {
     fetchStatus: BRRedux.FetchStatus.NOT_FETCHED,
     selectedId: -1,
     collection: [],
@@ -20,7 +20,7 @@ const DEFAULT_STATE: IShoesState = {
 
 const { FETCH, FIND, CREATE, UPDATE, DELETE, LOAD_COLLECTION, LOAD_ONE, ERROR } = Actions.ActionType;
 
-export const shoesReducer = (state: IShoesState = DEFAULT_STATE, action: Actions.ShoeAction): IShoesState => {
+export const shoesReducer = (state: IShoesState = DEFAULT_STATE, action: Actions.ShoeAction | BRRedux.Action<''>): IShoesState => {
     switch (action.type) {
         case FIND:
             // If we already have this, use the shoe in memory
